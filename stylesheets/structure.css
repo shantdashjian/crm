@@ -1,0 +1,27 @@
+body {
+	margin: 0px;
+}
+#header {
+	height: 100px;
+	background: pink;
+}
+#sidebar {
+	width: 20%;
+	background: orange;
+	height: 500px;
+	float: left;
+}
+#content {
+	float: left;
+}
+#advertising {
+	width: 20%;
+	background: cyan;
+	height: 500px;
+	float: right;
+}
+#footer {
+	height: 50px;
+	background: pink;
+	clear: both;
+}

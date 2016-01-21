@@ -1,0 +1,26 @@
+body {
+font-family: Arial;
+color: purple;
+}
+h1 {
+	color: black;
+}
+.header {
+	text-decoration: none;
+	font-family: sans-serif;
+	text-align: center;
+	color: orange;
+}
+#id {
+	color: yellow;
+}
+p:hover {
+	color: #6644ff;
+	text-decoration: none;
+	font-family: serif;
+}
+blockquote cite {
+	color: #22ff11;
+	text-decoration: none;
+	font-family: serif;
+}

@@ -1,0 +1,45 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px;
+	color: #333333;
+}
+div#header {
+	background: #3056a0;
+	color: #ffffff;
+	text-align: center;
+	line-height: 70px;
+	font-size: 3em;
+}
+div#contactDetails, div#contactList {
+	border: 1px solid #999999;
+	margin: 15px;
+	padding: 15px;
+}
+div#footer {
+	background: #3056a0;
+	color: #ffffff;
+	text-align: center;
+	line-height: 40px;
+	font-size: 0.8em;	
+}
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+td {
+	padding: 5px;
+}
+thead {
+	background: #3056a0;
+	color: #ffffff;
+}
+table caption {
+	font-weight: bold;
+}
+tfoot {
+	font-size: 0.75em;
+	text-align: right;
+}
+tbody tr:nth-child(2n + 0) {
+	background: #e6e6f5;
+}
