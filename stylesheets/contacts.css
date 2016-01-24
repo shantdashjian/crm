@@ -3,6 +3,17 @@ body {
 	margin: 0px;
 	color: #333333;
 }
+label {
+	width: 150px;
+	display: inline-block;
+	vertical-align: top;
+}
+input {
+	width: 200px;
+}
+.formRow {
+	margin-bottom: 10px;
+}
 div#header {
 	background: #3056a0;
 	color: #ffffff;

@@ -1,0 +1,8 @@
+label {
+	width: 150px;
+	display: inline-block;
+	vertical-align: top;
+}
+.formRow {
+	margin-bottom: 10px;
+}

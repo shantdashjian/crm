@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Form Try It</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/stylesheet" href="stylesheets/form.css">
+	</head>
+	<body>
+		<form method="post">
+			<div class="formRow">
+				<label for="fullName">Full Name</label>
+				<input autofocus placeholder="Enter your full name here" name="fullName" id="fullName" type="text">
+			</div>
+			<div class="formRow">
+				<label for="male">Male</label>
+				<input checked type="radio" name="gender" id="male" value="male">
+				<label for="female">Female</label>
+				<input type="radio" name="gender" id="female" value="female">
+			</div>
+			<div class="formRow">
+				<label for="subscribe">Subscribe to Newsletter?</label>
+				<input type="checkbox" name="subscribe" id="subscribe">
+			</div>
+			<div class="formRow">
+				<label for="notes">Notes</label>
+				<textarea name="notes" id="notes" cols="30" rows="5">
+				</textarea>
+			</div>
+			<div class="formRow">
+				<label for="dob">Date of Birth</label>
+				<input name="dob" id="dob" type="date">
+			</div>
+			<div class="formRow">
+				<label for="salary">Salary</label>
+				<input name="salary" id="salary" type="number" step="500">
+			</div>
+			<div class="formRow">
+				<input id="submit" type="submit" value="Submit">
+			</div>
+		</form>
+	</body>
+</html>
