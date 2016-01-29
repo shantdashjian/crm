@@ -13,31 +13,39 @@ input {
 }
 .formRow {
 	margin-bottom: 10px;
+	
 }
-div#header {
+header {
 	background: #3056a0;
 	color: #ffffff;
 	text-align: center;
 	line-height: 70px;
 	font-size: 3em;
 }
-div#contactDetails, div#contactList {
+section {
 	border: 1px solid #999999;
 	margin: 15px;
 	padding: 15px;
 }
-div#footer {
+footer {
 	background: #3056a0;
 	color: #ffffff;
 	text-align: center;
 	line-height: 40px;
 	font-size: 0.8em;	
 }
+.validated:invalid {
+	background:#fac3c9;
+}
+.validated:valid {
+	background:#bdf0a8;
+}
+
 table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 }
-td {
+td , time{
 	padding: 5px;
 }
 thead {

@@ -7,97 +7,115 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<div id="header">
+		<header>
 			Contacts
-		</div>
-		<div id="contactDetails">
-			<h2>Contact Details</h2>
-			<form method="get">
-				<div class="formRow">
-					<label for="contactName">Contact Name</label>
-					<input autocomplete="off" name="contactName" id="contactName" type="text"/>
-				</div>		
-				<div class="formRow">
-					<label for="phoneNumber">Phone Number</label>
-					<input autofocus placeholder="Include area code" name="phoneNumber" id="phoneNumber" type="tel"/>
-				</div>	
-				<div class="formRow">
-					<label for="emailAddress">Email Address</label>
-					<input name="emailAddress" id="emailAddress" type="email"/>
-				</div>
-				<div class="formRow">
-					<label for="company">Company</label>
-					<select name="company" id="company">
-						<option value="-1">Please select</option>
-						<option value="1" selected="true">Integware</option>
-						<option value="2">New Century Software</option>
-						<option value="3">TransUnion</option>
-						<option value="4">Jones</option>
-						<option value="5">Level 3 Communications</option>
-					</select>	
-				</div>
-				<div class="formRow">
-					<label for="city">City</label>
-					<input list="cities" name="city">
-					<datalist name="cities" id="cities">
-						<option value="Integware">
-						<option value="New Century Software">
-						<option value="TransUnion">
-						<option value="Jones">
-						<option value="Level 3 Communications">
-					</datalist>	
-				</div>
-				<div class="formRow">
-					<label for="notes">Notes</label>
-					<textarea name="notes" id="notes" cols="20" rows="5">
-					</textarea>
-				</div>
-				<div class="formRow">
-					<label for="lastContacted">Last Contacted</label>
-					<input name="lastContacted" id="lastContacted" value="2015-01-24" type="date"/>
-				</div>
-				<div class="formRow">
-					<input name="submit" value="Save" type="submit" style="width:70px">
-				</div>			
-			</form>
-		</div>
-		<div id="contactList">
-			<table>
-				<caption>Sales Leads</caption>
-				<thead>
-					<tr>
-						<th>Contact Name</th>
-						<th>Phone Number</th>
-						<th>Email Address</th>
-						<th>Company Name</th>
-						<th>Last Contacted</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Will Smith</td>
-						<td>555-555-5555</td>
-						<td>will.smith@gmail.com</td>
-						<td>Level 3 Communications</td>
-						<td>2016-01-15</td>
-					</tr>
-					<tr>
-						<td>Jimmy Carr</td>
-						<td>555-555-5556</td>
-						<td>jimmy.carr@gmail.com</td>
-						<td>Level 3 Communications</td>
-						<td>2016-01-14</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="5">2 contacts displayed</td>
-					</tr>
-				</tfoot>
-			</table>	
-		</div>
-		<div id="footer">
+		</header>
+		<main id="contactScreen">
+			<section id="contactDetails">
+				<h2>Contact Details</h2>
+				<form method="get">
+					<div class="formRow">
+						<label for="contactName">Contact Name</label>
+						<input autofocus class="validated" required autocomplete="off" 
+							name="contactName" id="contactName" pattern=".{5,100}" type="text"/>
+					</div>		
+					<div class="formRow">
+						<label for="phoneNumber">Phone Number</label>
+						<input placeholder="Include area code" name="phoneNumber" id="phoneNumber" 
+							pattern="[0-9() ]{5,15}" class="validated" type="tel"/>
+					</div>	
+					<div class="formRow">
+						<label for="emailAddress">Email Address</label>
+						<input required class="validated" name="emailAddress" id="emailAddress" 
+							type="email"/>
+					</div>
+					<div class="formRow">
+						<label for="company">Company</label>
+						<select required name="company" id="company">
+							<option value="">Please select</option>
+							<option value="1" >Integware</option>
+							<option value="2">New Century Software</option>
+							<option value="3">TransUnion</option>
+							<option value="4">Jones</option>
+							<option value="5">Level 3 Communications</option>
+						</select>	
+					</div>
+					<div class="formRow">
+						<label for="city">City</label>
+						<input list="cities" name="city">
+						<datalist name="cities" id="cities">
+							<option value="Integware">
+							<option value="New Century Software">
+							<option value="TransUnion">
+							<option value="Jones">
+							<option value="Level 3 Communications">
+						</datalist>	
+					</div>
+					<div class="formRow">
+						<label for="notes">Notes</label>
+						<textarea name="notes" id="notes" cols="20" rows="5" maxlength="10">
+						</textarea>
+					</div>
+					<div class="formRow">
+						<label for="lastContacted">Last Contacted</label>
+						<input name="lastContacted" id="lastContacted" value="2015-01-24" type="date"/>
+					</div>
+					<div class="formRow">
+						<input name="submit" value="Save" type="submit" style="width:70px">
+					</div>			
+				</form>
+			</section>
+			<section id="contactList">
+				<table>
+					<caption>Sales Leads</caption>
+					<thead>
+						<tr>
+							<th>Contact Name</th>
+							<th>Phone Number</th>
+							<th>Email Address</th>
+							<th>Company Name</th>
+							<th>Last Contacted</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Will Smith</td>
+							<td>555-555-5555</td>
+							<td>will.smith@gmail.com</td>
+							<td>Level 3 Communications</td>
+							<td><time datetime="2016-01-15">2016-01-15</time></td>
+						</tr>
+						<tr>
+							<td>Jimmy Carr</td>
+							<td>555-555-5556</td>
+							<td>jimmy.carr@gmail.com</td>
+							<td>Level 3 Communications</td>
+							<td><time datetime="2016-01-15">2016-01-15</time></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="5">2 contacts displayed</td>
+						</tr>
+					</tfoot>
+				</table>	
+			</section>
+		</main>
+		<footer>
 			Copyright &copy; 2016 Shaun Dashjian
-		</div>
+		</footer>
 	</body>
+	<script>
+		var contactName = document.getElementById('contactName');
+		contactName.oninvalid = function(e) {
+			e.target.setCustomValidity("");
+			if (!e.target.validity.valid) {
+				if (e.target.value.length == 0) {
+					e.target.setCustomValidity("Contact name is required.");
+				} else if (e.target.value.length < 5) {
+					e.target.setCustomValidity("Contact name must be at least 5 characters.");
+				}
+			}
+		};
+	</script>
 </html>

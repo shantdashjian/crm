@@ -6,3 +6,11 @@ label {
 .formRow {
 	margin-bottom: 10px;
 }
+
+.validate:invalid {
+	border-color: red;
+}
+
+.validate:valid {
+	border-color: green;
+}
