@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Text Dropper!</title>
+		<meta charset='utf-8'>
+		<link type="text/stylesheet" rel="stylesheet" href="stylesheets/text_dropper.css">
+		<script src="scripts/text_dropper.js"></script>
+	</head>
+	<body>
+		<h1 draggable="true" ondragstart="startDragging(event)" ondragend="endDragging(event)"
+			>Take me there!</h1>
+		<h2 draggable="true" ondragstart="startDragging(event)" ondragend="endDragging(event)"
+			>No, take me there instead!</h2>
+		<div class="box" ondragover="allowDrop(event)" ondrop="drop(event)">Put it here</div>
+	</body>
+</html>

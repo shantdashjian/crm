@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Drag and Drop</title>
+		<meta charset='utf-8'>
+		<link type="text/stylesheet" rel="stylesheet" href="stylesheets/drag_and_drop.css">
+		<script src="scripts/drag_and_drop.js"></script>
+	</head>
+	<body>
+		<div draggable="true" ondragstart="startDragging(event)" 
+			ondragend="endDragging(event)" class="box" 
+			style="background:red"></div>
+		<div draggable="true" ondragstart="startDragging(event)" 
+			ondragend="endDragging(event)" class="box" 
+			style="background:green"></div>
+		<div draggable="true" ondragstart="startDragging(event)" 
+			ondragend="endDragging(event)" class="box" 
+			style="background:blue"></div>
+		<p>
+		<div ondragenter="setBorderWidth(event, '4px')" 
+			ondragleave="setBorderWidth(event, '2px')" 
+			ondrop="drop(event)" ondragover="allowDrop(event)" 
+			class="box" style="background:white"></div>
+		<div ondragenter="setBorderWidth(event, '4px')" 
+			ondragleave="setBorderWidth(event, '2px')" 
+			ondrop="drop(event)" ondragover="allowDrop(event)"
+			class="box" style="background:white"></div>
+		<div ondragenter="setBorderWidth(event, '4px')" 
+			ondragleave="setBorderWidth(event, '2px')" 
+			ondrop="drop(event)" ondragover="allowDrop(event)"
+			class="box" style="background:white"></div>
+	</body>
+</html>
