@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Debugging</title>
+		<meta charset='utf-8'>
+		<script>
+			
+			function calculateAbsoluteSumOfArray(a) {
+				var result = 0;
+				for (var i = 0; i < a.length; i++) {
+					var num = a[i];
+					result = result + Math.abs(num);
+				}
+				return result;
+			}
+			
+			function calculateSumOfArray(a) {
+				var result = 0;
+				for (var i = 0; i < a.length; i++) {
+					var num = a[i];
+					result = result + num;
+				}
+				return result;
+			}	
+			
+			function findHighestSum(arrays) {
+				var result = Number.NEGATIVE_INFINITY;
+				for (var i = 0; i < arrays.length; i++) {
+					var a = arrays[i];
+					var sum = calculateSumOfArray(a);
+					if (sum > result) {
+						result = sum;
+					}
+				}
+				console.log('The largest sum is ' + result);
+			}
+			var arrays = [[1,2,3,4,5], [6,4,2], [1,9]];
+			
+		</script>
+	</head>
+	<body>
+		This page is for trying out the debugger
+		<p>
+		<button onclick="findHighestSum(arrays)">Click me to sum arrays</button>
+		<p>
+		<button onclick="calculateAbsoluteSumOfArray(arrays[0])">Click me to cause an error
+			</button>
+	</body>
+</html>

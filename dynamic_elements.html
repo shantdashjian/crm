@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Dynamic Elements</title>
+		<meta charset='utf-8'>
+		<link type="text/stylesheet" rel="stylesheet" href="stylesheets/dynamic_elements.css">
+		<script src="scripts/dynamic_elements.js"></script>
+	</head>
+	<body>
+		<header>This page provides an example of the summary and details tags</header>
+		<details>
+			<summary>Table of Contents</summary>
+			<ol>
+				<li>Lesson 1</li>
+				<li>Lesson 2</li>
+				<li>Lesson 3</li>
+				<li>Lesson 4</li>
+				<li>Lesson 5</li>
+				<li>Lesson 6</li>
+			</ol>
+		</details>
+		<meter value="10" low="60" high="100" min="0" max="200"  >6 out of 10</meter>
+		<progress id="progressBar" value="0" min="0" max="100"></progress>
+		<progress id="indeterminateProgressBar" min="0" max="100"></progress>
+		<p>
+		0%<input id="range" type="range" min="0" max="200" value="0" step="3">100%
+		<p>
+		<label style="margin: 0px 0px 0px 90px" id="value">5</label>
+		<p>
+		<details>
+			<summary>List of patients with high heart rates.</summary>
+			<table>
+				<thead>
+					<tr style="font-weight: bold; text-align: center">
+						<td>Patient
+						<td>Rate
+					</tr>
+				<thead>
+				<tbody>
+					<tr>
+						<td>Tim Brown
+						<td>112
+					</tr>
+					<tr>
+						<td>Rachael Black
+						<td>112
+					</tr>
+				</tbody>
+			</table>
+		</details>
+	</body>
+</html>
