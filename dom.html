@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>DOM API</title>
+		<meta charset="utf-8">
+		<style>
+			ol {
+				display:none;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="mainHeader">Days of the Week</h1>
+		<ol id="daysOfWeek">
+			<li>Sunday
+			<li>Monday
+			<li>Tuesday
+			<li>Wednesday
+			<li>Thursday
+			<li>Friday
+			<li>Saturday
+		</ol>
+		<script>
+			document.getElementsByClassName('mainHeader')[0].addEventListener("mouseenter",
+				function(event) {
+					document.getElementById('daysOfWeek').style.display = 'block';
+				});
+			document.getElementsByClassName('mainHeader')[0].addEventListener("mouseleave",
+				function(event) {
+					document.getElementById('daysOfWeek').style.display = 'none';
+				});
+		</script>
+	</body>
+</html>

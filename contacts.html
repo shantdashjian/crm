@@ -3,8 +3,9 @@
 	<head>
 		<title>Customer Relationship Management</title>
 		<!--<link type="text/stylesheet" rel="stylesheet" href="stylesheets/reset.css">-->
-		<link type="text/stylesheet" rel="stylesheet" href="stylesheets/contacts.css">
-		<meta charset="utf-8">
+		<link type="text/stylesheet" REL="stylesheet" href="stylesheets/contacts.css"/>
+		<meta charset="utf-8"/>
+		<script src="scripts/contacts.js"></script>
 	</head>
 	<body>
 		<header>
@@ -104,18 +105,10 @@
 		<footer>
 			Copyright &copy; 2016 Shaun Dashjian
 		</footer>
+		<script>
+			var mainElement = document.getElementById('contentScreen');
+			var appScreen = contactsScreen(mainElement);
+			appScreen.init();
+		</script>
 	</body>
-	<script>
-		var contactName = document.getElementById('contactName');
-		contactName.oninvalid = function(e) {
-			e.target.setCustomValidity("");
-			if (!e.target.validity.valid) {
-				if (e.target.value.length == 0) {
-					e.target.setCustomValidity("Contact name is required.");
-				} else if (e.target.value.length < 5) {
-					e.target.setCustomValidity("Contact name must be at least 5 characters.");
-				}
-			}
-		};
-	</script>
 </html>
