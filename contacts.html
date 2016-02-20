@@ -12,7 +12,7 @@
 			Contacts
 		</header>
 		<main id="contactScreen">
-			<section id="contactDetails">
+			<section id="contactDetails" style="display:none;">
 				<h2>Contact Details</h2>
 				<form method="get">
 					<div class="formRow">
@@ -23,12 +23,12 @@
 					<div class="formRow">
 						<label for="phoneNumber">Phone Number</label>
 						<input placeholder="Include area code" name="phoneNumber" id="phoneNumber" 
-							pattern="[0-9() ]{5,15}" class="validated" type="tel"/>
+							pattern="[0-9() -]{5,15}" class="validated" type="tel"/>
 					</div>	
 					<div class="formRow">
 						<label for="emailAddress">Email Address</label>
 						<input required class="validated" name="emailAddress" id="emailAddress" 
-							type="email"/>
+							type="email" pattern="[a-zA-Z.0-9]+@[a-zA-Z0-9]+[.][a-zA-Z]+"/>
 					</div>
 					<div class="formRow">
 						<label for="company">Company</label>
@@ -45,11 +45,10 @@
 						<label for="city">City</label>
 						<input list="cities" name="city">
 						<datalist name="cities" id="cities">
-							<option value="Integware">
-							<option value="New Century Software">
-							<option value="TransUnion">
-							<option value="Jones">
-							<option value="Level 3 Communications">
+							<option value="Fort Collins">
+							<option value="Denver">
+							<option value="Boston">
+							<option value="New York">
 						</datalist>	
 					</div>
 					<div class="formRow">
@@ -84,14 +83,20 @@
 							<td>555-555-5555</td>
 							<td>will.smith@gmail.com</td>
 							<td>Level 3 Communications</td>
-							<td><time datetime="2016-01-15">2016-01-15</time></td>
+							<td>
+								<time datetime="2016-01-15">2016-01-15</time>
+								<div class="overlay">My notes here</div>	
+							</td>
 						</tr>
 						<tr>
 							<td>Jimmy Carr</td>
 							<td>555-555-5556</td>
 							<td>jimmy.carr@gmail.com</td>
 							<td>Level 3 Communications</td>
-							<td><time datetime="2016-01-15">2016-01-15</time></td>
+							<td>
+								<time datetime="2016-01-15">2016-01-15</time>
+								<div class="overlay">My notes here</div>	
+							</td>						
 						</tr>
 					</tbody>
 					<tfoot>
@@ -99,7 +104,10 @@
 							<td colspan="5">2 contacts displayed</td>
 						</tr>
 					</tfoot>
-				</table>	
+				</table>
+				<div class="controls">
+					<a href="#" id="addContact">Add a new contact</a>
+				</div>	
 			</section>
 		</main>
 		<footer>

@@ -62,3 +62,18 @@ tfoot {
 tbody tr:nth-child(2n + 0) {
 	background: #e6e6f5;
 }
+
+.controls {
+	padding:15px;
+}
+
+.overlay {
+	height:100px;
+	width:300px;
+	border:1px solid #333333;
+	background:#eeeeee;
+	padding:10px;
+	display:none;
+	position:fixed;
+	z-index:1;
+}
