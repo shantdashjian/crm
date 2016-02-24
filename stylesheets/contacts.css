@@ -77,3 +77,9 @@ tbody tr:nth-child(2n + 0) {
 	position:fixed;
 	z-index:1;
 }
+
+.requiredMarker {
+	color:red;
+	padding-left:7px;
+}
+

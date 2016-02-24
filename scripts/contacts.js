@@ -5,7 +5,7 @@ function contactsScreen(mainID){
 		init: function() {
 			if (initialized === true) {
 				return;
-			}
+			};
 			var contactName = document.getElementById('contactName');
 			contactName.oninvalid = function(e) {
 				e.target.setCustomValidity("");
@@ -34,7 +34,23 @@ function contactsScreen(mainID){
 					}
 				);
 			};
-		}	
+			$(':input[required]').siblings('label').
+				append($('<span>').text('*').addClass('requiredMarker'));
+		},	
+		serializeForm: function() {
+			var inputFields = $(appScreen).find('form :input');
+			var result = {};
+			$.each(inputFields, function(index, value) {
+				if ($(value).attr('name')) {
+					result[$(value).attr('name')] = $(value).val();
+				}
+			});
+			return result;
+		}
 	};
 	return o;
-}
+};
+
+$.expr[':'].email = function(element) {
+	return $(element).is("input") && $(element).attr("type") === "email";
+};
