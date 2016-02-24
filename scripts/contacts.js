@@ -36,6 +36,22 @@ function contactsScreen(mainID){
 			};
 			$(':input[required]').siblings('label').
 				append($('<span>').text('*').addClass('requiredMarker'));
+			$(appScreen).find('form input[type="submit"]').click(
+				function(event) {
+					event.preventDefault();
+					if ($(event.target).parents('form')[0].checkValidity()) {
+						var contact = this.serializeForm();
+						var html = '<tr><td>'+contact.contactName+'</td>'+
+													'<td>'+contact.phoneNumber+'</td>'+
+													'<td>'+contact.emailAddress+'</td>'+
+													'<td>'+contact.company+'</td>'+
+													'<td><time datetime="'+contact.lastContacted+'">'+
+														contact.lastContacted+'</time>'+
+														'<div class="overlay">'+contact.notes+'</div></td></tr>';
+						$(appScreen).find('table tbody').append(html);
+					}
+				}.bind(this)
+			);
 		},	
 		serializeForm: function() {
 			var inputFields = $(appScreen).find('form :input');
@@ -45,6 +61,9 @@ function contactsScreen(mainID){
 					result[$(value).attr('name')] = $(value).val();
 				}
 			});
+			result['company'] = $(':input[name="company"] option[value="'+
+				$(':input[name="company"]').val()+'"]').text();
+			
 			return result;
 		}
 	};
@@ -54,3 +73,12 @@ function contactsScreen(mainID){
 $.expr[':'].email = function(element) {
 	return $(element).is("input") && $(element).attr("type") === "email";
 };
+
+/*Iterating through all input fields with pattern attribute and appending a 
+sibling (using after) that is the pattern text itself */
+/*
+var inputs = $(':input[pattern]');
+$.each(inputs, function(index, value) {
+$(value).after($('<span>').text($(value).attr('pattern')));
+});
+*/
