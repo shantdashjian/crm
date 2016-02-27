@@ -6,6 +6,7 @@ function contactsScreen(mainID){
 			if (initialized === true) {
 				return;
 			};
+			
 			var contactName = document.getElementById('contactName');
 			contactName.oninvalid = function(e) {
 				e.target.setCustomValidity("");
@@ -17,12 +18,15 @@ function contactsScreen(mainID){
 					}
 				}
 			};
+			
 			initialized = true;
+			
 			document.getElementById('addContact').addEventListener('click', function(event){
 					event.preventDefault();
 					document.getElementById('contactDetails').style.display = 'block';
 				}
 			);
+			
 			var allTimeElements = document.getElementsByTagName('time');
 			for (var i = 0; i < allTimeElements.length; i++){
 				allTimeElements[i].addEventListener('mouseenter', function(event) {
@@ -34,8 +38,10 @@ function contactsScreen(mainID){
 					}
 				);
 			};
+			
 			$(':input[required]').siblings('label').
 				append($('<span>').text('*').addClass('requiredMarker'));
+			
 			$(appScreen).find('form input[type="submit"]').click(
 				function(event) {
 					event.preventDefault();
@@ -49,10 +55,18 @@ function contactsScreen(mainID){
 														contact.lastContacted+'</time>'+
 														'<div class="overlay">'+contact.notes+'</div></td></tr>';
 						$(appScreen).find('table tbody').append(html);
+						//Clean up the form
+						$(appScreen).find('form :input[name!="submit"]').val('');
+						//Hide the input section
+						$(appScreen).find('#contactDetails').hide();
+						//Call init
+						initialized = false;
+						this.init();
 					}
 				}.bind(this)
 			);
 		},	
+		
 		serializeForm: function() {
 			var inputFields = $(appScreen).find('form :input');
 			var result = {};
