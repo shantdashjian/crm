@@ -27,14 +27,19 @@ function contactsScreen(mainID){
 				}
 			);
 			
-			$(appScreen).find('tbody').on("mouseenter mouseleave dblclick", "td > time",
+			$(appScreen).on("click", "[data-delete-button]",
+				function(event) {
+					event.preventDefault();
+					this.delete(event);	
+				}.bind(this)
+			);
+			
+			$(appScreen).find('tbody').on("mouseenter mouseleave", "td > time",
 				function(event) {
 					if (event.type === "mouseenter") {
 						$(event.target).siblings('.overlay').slideDown(10);
 					} else if (event.type === "mouseleave") {
 						$(event.target).siblings('.overlay').slideUp(10);					
-					} else {
-						console.log("Double click");
 					}
 				}
 			);
@@ -45,26 +50,28 @@ function contactsScreen(mainID){
 			$(appScreen).find('form input[type="submit"]').click(
 				function(event) {
 					event.preventDefault();
-					if ($(event.target).parents('form')[0].checkValidity()) {
-						var contact = this.serializeForm();
-						var html = '<tr><td>'+contact.contactName+'</td>'+
-													'<td>'+contact.phoneNumber+'</td>'+
-													'<td>'+contact.emailAddress+'</td>'+
-													'<td>'+contact.company+'</td>'+
-													'<td><time datetime="'+contact.lastContacted+'">'+
-														contact.lastContacted+'</time>'+
-														'<div class="overlay">'+contact.notes+'</div></td></tr>';
-						$(appScreen).find('table tbody').append(html);
-						//Clean up the form
-						$(appScreen).find('form :input[name!="submit"]').val('');
-						//Hide the input section
-						$(appScreen).find('#contactDetails').hide();
-						//Call init
-						// initialized = false;
-						// this.init();
-					}
+					this.save(event);
+					//  if ($(event.target).parents('form')[0].checkValidity()) {
+//  						var contact = this.serializeForm();
+//  						var html = '<tr><td>'+contact.contactName+'</td>'+
+//  													'<td>'+contact.phoneNumber+'</td>'+
+//  													'<td>'+contact.emailAddress+'</td>'+
+//  													'<td>'+contact.company+'</td>'+
+//  													'<td><time datetime="'+contact.lastContacted+'">'+
+//  														contact.lastContacted+'</time>'+
+//  														'<div class="overlay">'+contact.notes+'</div></td></tr>';
+//  						$(appScreen).find('table tbody').append(html);
+//  						//Clean up the form
+//  						$(appScreen).find('form :input[name!="submit"]').val('');
+//  						//Hide the input section
+//  						$(appScreen).find('#contactDetails').hide();
+//  						//Call init
+//  						// initialized = false;
+//  						// this.init();
+//  					}
 				}.bind(this)
 			);
+			
 			$(appScreen).find('textarea').keydown(function(event) {
 				if ($(event.target).siblings('.textCount')) {
 					var characters = $(event.target).val().length;
@@ -80,7 +87,32 @@ function contactsScreen(mainID){
 					$(event.target).closest('tr').removeAttr('style');
 				}
 			});
+			
+			this.updateTableCount();
 		},	
+		
+		save: function(event) {
+			if ($(event.target).parents('form')[0].checkValidity()) {
+				var fragment = $(appScreen).find('#contactRow')[0].content.cloneNode(true);
+				var row = $('<tr>').append(fragment);
+				var contact = this.serializeForm();
+				row = bind(row, contact);
+				$(appScreen).find('table tbody').append(row);
+				$(appScreen).find('form :input[name!="submit"]').val('');
+				$(appScreen).find('#contactDetails').hide();				
+			};
+			this.updateTableCount(event);
+		},
+		
+		delete: function(event) {
+			$(event.target).parents('tr').remove();
+			this.updateTableCount(event);
+		},
+		
+		updateTableCount: function(event) {
+			var count = $(appScreen).find('table tbody tr').length;	
+			$(appScreen).find('tfoot td').text(count + ' contacts displayed');
+		},
 		
 		serializeForm: function() {
 			var inputFields = $(appScreen).find('form :input');
@@ -90,8 +122,8 @@ function contactsScreen(mainID){
 					result[$(value).attr('name')] = $(value).val();
 				}
 			});
-			result['company'] = $(':input[name="company"] option[value="'+
-				$(':input[name="company"]').val()+'"]').text();
+			result['companyName'] = $(':input[name="companyName"] option[value="'+
+				$(':input[name="companyName"]').val()+'"]').text();
 			
 			return result;
 		}
@@ -103,6 +135,22 @@ $.expr[':'].email = function(element) {
 	return $(element).is("input") && $(element).attr("type") === "email";
 };
 
+function bind(template, object) {
+	// iterate through every element that has a data-property-name attribute
+	// and provide a callback function to each, where value = the element itself
+	// then assign the text of that element a value (the value of the field) 
+	//		you get from the object
+	$.each(template.find('[data-property-name]'), function(index, value) {
+		var field = $(value).data().propertyName;
+		if (object[field]) {
+			$(value).text(object[field]);
+			if ($(value).is('time')) {
+				$(value).attr('datetime', object[field]);
+			}
+		}
+	});
+	return template;
+};
 /*Iterating through all input fields with pattern attribute and appending a 
 sibling (using after) that is the pattern text itself */
 /*

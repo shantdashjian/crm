@@ -34,8 +34,8 @@
 							type="email" pattern="[a-zA-Z.0-9]+@[a-zA-Z0-9]+[.][a-zA-Z]+"/>
 					</div>
 					<div class="formRow">
-						<label for="company">Company</label>
-						<select required name="company" id="company">
+						<label for="companyName">Company Name</label>
+						<select required name="companyName" id="companyName">
 							<option value="">Please select</option>
 							<option value="1" >Integware</option>
 							<option value="2">New Century Software</option>
@@ -80,33 +80,15 @@
 							<th>Email Address</th>
 							<th>Company Name</th>
 							<th>Last Contacted</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Will Smith</td>
-							<td>555-555-5555</td>
-							<td>will.smith@gmail.com</td>
-							<td>Level 3 Communications</td>
-							<td>
-								<time datetime="2016-01-15">2016-01-15</time>
-								<div class="overlay">My notes here</div>	
-							</td>
-						</tr>
-						<tr>
-							<td>Jimmy Carr</td>
-							<td>555-555-5556</td>
-							<td>jimmy.carr@gmail.com</td>
-							<td>Level 3 Communications</td>
-							<td>
-								<time datetime="2016-01-14">2016-01-14</time>
-								<div class="overlay">My notes here</div>	
-							</td>						
-						</tr>
+						
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="5">2 contacts displayed</td>
+							<td colspan="6"></td>
 						</tr>
 					</tfoot>
 				</table>
@@ -114,6 +96,19 @@
 					<a href="#" id="addContact">Add a new contact</a>
 				</div>	
 			</section>
+			<template id="contactRow">
+				<td data-property-name="contactName"></td>
+				<td data-property-name="phoneNumber"></td>
+				<td data-property-name="emailAddress"></td>
+				<td data-property-name="companyName"></td>
+				<td >
+					<time data-property-name="lastContacted"></time>
+					<div  data-property-name="notes" class="overlay"></div>
+				</td>
+				<td>
+					<a href="#" data-delete-button>Delete</a>
+				</td>
+			</template>
 		</main>
 		<footer>
 			Copyright &copy; 2016 Shaun Dashjian
