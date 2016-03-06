@@ -27,17 +27,17 @@ function contactsScreen(mainID){
 				}
 			);
 			
-			var allTimeElements = document.getElementsByTagName('time');
-			for (var i = 0; i < allTimeElements.length; i++){
-				allTimeElements[i].addEventListener('mouseenter', function(event) {
-						event.target.nextElementSibling.style.display = 'block';
+			$(appScreen).find('tbody').on("mouseenter mouseleave dblclick", "td > time",
+				function(event) {
+					if (event.type === "mouseenter") {
+						$(event.target).siblings('.overlay').slideDown(10);
+					} else if (event.type === "mouseleave") {
+						$(event.target).siblings('.overlay').slideUp(10);					
+					} else {
+						console.log("Double click");
 					}
-				);
-				allTimeElements[i].addEventListener('mouseleave', function(event) {
-						event.target.nextElementSibling.style.display = 'none';
-					}
-				);
-			};
+				}
+			);
 			
 			$(':input[required]').siblings('label').
 				append($('<span>').text('*').addClass('requiredMarker'));
@@ -60,11 +60,26 @@ function contactsScreen(mainID){
 						//Hide the input section
 						$(appScreen).find('#contactDetails').hide();
 						//Call init
-						initialized = false;
-						this.init();
+						// initialized = false;
+						// this.init();
 					}
 				}.bind(this)
 			);
+			$(appScreen).find('textarea').keydown(function(event) {
+				if ($(event.target).siblings('.textCount')) {
+					var characters = $(event.target).val().length;
+					$(event.target).siblings('.textCount').text($(event.target).val() + ' ' + characters);//text(characters + ' characters');
+				}
+			});
+			
+			$(appScreen).find('tbody').on("mouseenter mouseleave","tr", function(event) {
+				if (event.type === "mouseenter") {
+					$(event.target).closest('tr').css('color','white');
+					$(event.target).closest('tr').css('background','#3056A0');
+				} else {
+					$(event.target).closest('tr').removeAttr('style');
+				}
+			});
 		},	
 		
 		serializeForm: function() {

@@ -56,8 +56,10 @@
 					</div>
 					<div class="formRow">
 						<label for="notes">Notes</label>
-						<textarea name="notes" id="notes" cols="20" rows="5" maxlength="10">
+						<textarea name="notes" id="notes" cols="40" rows="6" class="validated"
+							maxlength="1000">
 						</textarea>
+							<span style="background:gray;" class="textCount"></span>
 					</div>
 					<div class="formRow">
 						<label for="lastContacted">Last Contacted</label>
@@ -117,9 +119,14 @@
 			Copyright &copy; 2016 Shaun Dashjian
 		</footer>
 		<script>
-			var mainElement = document.getElementById('contactScreen');
-			var appScreen = contactsScreen(mainElement);
-			appScreen.init();
+			$(document).ready(function(event) {
+				var mainElement = document.getElementById('contactScreen');
+				var appScreen = contactsScreen(mainElement);
+				appScreen.init();
+			});
+			$(window).resize(function(event) {
+				console.log("resized");
+			});
 		</script>
 	</body>
 </html>

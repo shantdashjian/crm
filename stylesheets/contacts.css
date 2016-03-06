@@ -71,6 +71,7 @@ tbody tr:nth-child(2n + 0) {
 	height:100px;
 	width:300px;
 	border:1px solid #333333;
+	color: #333333 !important;
 	background:#eeeeee;
 	padding:10px;
 	display:none;
